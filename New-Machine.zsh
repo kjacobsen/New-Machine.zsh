@@ -23,81 +23,60 @@ fi
 echo
 echo "Installing brews:"
 
-echo " - Azure Cli"
-brew install azure-cli
-echo " - Gitversion"
-brew install gitversion
-echo " - Hugo"
-brew install hugo
-echo " - mas"
-brew install mas
+brews=(
+    'azure-cli'
+    'gitversion'
+    'hugo'
+    'mas'
+)
+
+for brew in $brews; do
+    brew install $brew
+done
 
 
 echo
 echo "Installing casks:"
 
-echo " - Adobe Creative Cloud"
-brew cask install adobe-creative-cloud
-echo " - Azure Data Studio"
-brew cask install azure-data-studio
-echo " - Azure Storage Explorer"
-brew cask install microsoft-azure-storage-explorer
-echo " - Backblaze"
-brew cask install backblaze
-echo " - Balena Etcher"
-brew cask install balenaetcher
-echo " - BitWarden"
-brew cask install bitwarden
-echo " - Brave"
-brew cask install brave-browser
-echo " - Cisco Proximity"
-brew cask install cisco-proximity
-echo " - Discord"
-brew cask install discord
-echo " - Docker"
-brew cask install docker
-echo " - Elmedia Player"
-brew cask install elmedia-player
-echo " - GitKraken"
-brew cask install gitkraken
-echo " - Kodi"
-brew cask install kodi
-echo " - iStat Menus"
-brew cask install istat-menus
-echo " - iTerm 2"
-brew cask install iterm2
-echo " - LastPass"
-brew cask install lastpass
-echo " - Minecraft"
-brew cask install minecraft
-echo " - Office"
-brew cask install microsoft-office
-echo " - Parallels"
-brew cask install parallels
-echo " - Postman"
-brew cask install postman
-echo " - Powershell"
-brew cask install powershell
-echo " - Raspberry Pi Imager"
-brew cask install raspberry-pi-imager
-echo " - QMK Toolbox"
-brew cask install homebrew/cask-drivers/qmk-toolbox
-echo " - SD Formatter"
-brew cask install sdformatter
-echo " - Steam"
-brew cask install steam
-echo " - Telegram"
-brew cask install telegram
-echo " - VS Code"
-brew cask install visual-studio-code
+casks=(
+    'adobe-creative-cloud'
+    'azure-data-studio'
+    'backblaze'
+    'balenaetcher'
+    'bitwarden'
+    'brave-browser'
+    'cisco-proximity'
+    'discord'
+    'docker'
+    'elmedia-player'
+    'gitkraken'
+    'homebrew/cask-drivers/qmk-toolbox'
+    'istat-menus'
+    'iterm2'
+    'kodi'
+    'lastpass'
+    'microsoft-azure-storage-explorer'
+    'microsoft-office'
+    'minecraft'
+    'parallels'
+    'postman'
+    'powershell'
+    'raspberry-pi-imager'
+    'sdformatter'
+    'steam'
+    'telegram'
+    'visual-studio-code'
+)
+
+for cask in $casks; do
+    brew install --cask $cask
+done
 
 
 echo
-echo "Install casks from taps:"
-
-echo " - Cask Version"
+echo "Tapping Cask Versions"
 brew tap homebrew/cask-versions
-echo " - - Powershell Preview"
+echo "Installing Powershell Preview"
 brew cask install powershell-preview
 
 
@@ -125,23 +104,21 @@ defaults write com.apple.dock mru-spaces -bool false
 echo
 echo "Installing App Store Apps:"
 
-echo " - Amphetamine"
-mas install 937984704
-echo " - Commander Pro"
-mas install 1035237815
-echo " - Keynote"
-mas install 409183694
-echo " - LastPass"
-mas install 926036361
-echo " - Magnet"
-mas install 441258766
-echo " - Microsoft RDP"
-mas install 1295203466
-echo " - Numbers"
-mas install 409203825
-echo " - Pages"
-mas install 409201541
-echo " - Stuffit Expander"
-mas install 919269455
-echo " - Xcode"
-mas install 497799835
+declare -A apps
+apps=(
+    [Amphetamine]=937984704
+    [Commander-Pro]=1035237815
+    [Keynote]=409183694
+    [LastPass]=926036361
+    [Magnet]=441258766
+    [Microsoft-RDP]=1295203466
+    [Numbers]=409203825
+    [Pages]=409201541
+    [Stuffit-Expander]=919269455
+    [Xcode]=497799835
+)
+
+for name id in ${(kv)apps}; do
+    echo " - $name"
+    mas install $id
+done
