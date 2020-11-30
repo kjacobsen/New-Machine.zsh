@@ -1,8 +1,6 @@
 #!/bin/zsh
 
-if 
-    $(fdesetup isactive)
-then
+if $(fdesetup isactive); then
     echo "KeyVault is active."
 else
     echo "Enabling KeyVault."
@@ -10,9 +8,7 @@ else
 fi
 
 
-if
-    (( $+commands[brew] ))
-then
+if (( $+commands[brew] )); then
     echo "Homebrew already installed."
 else
     echo "Installing Homebrew."
@@ -25,6 +21,7 @@ echo "Installing brews:"
 
 brews=(
     'azure-cli'
+    'dockutil'
     'gitversion'
     'hugo'
     'mas'
@@ -101,6 +98,59 @@ defaults write com.apple.ImageCapture disableHotPlug -bool true
 echo " - Disable automatic Spaces arrangement"
 defaults write com.apple.dock mru-spaces -bool false
 
+echo
+echo "Setting up Dock:"
+echo "Removing apps:"
+
+apps=(
+    'Mail'
+    'FaceTime'
+    'Messages'
+    'Maps'
+    'Photos'
+    'Contacts'
+    'Calendar'
+    'Reminders'
+    'Notes'
+    'Music'
+    'Podcasts'
+    'TV'
+    'News'
+    'Numbers'
+    'Keynote'
+    'Pages'
+    'App Store'
+    'System Preferences'
+)
+
+for app in $apps; do
+    exists=$(dockutil --find $app)
+    if [[ $exists =~ 'was found' ]]; then
+        dockutil --remove $app --no-restart
+    fi
+done
+
+
+echo "Adding apps:"
+apps=(
+    'Brave Browser'
+    'Microsoft Outlook'
+    'Microsoft Teams'
+    'Telegram'
+    'Visual Studio Code'
+    'GitKraken'
+    'iTerm'
+)
+
+for app in $apps; do
+    exists=$(dockutil --find $app)
+    if [[ $exists =~ 'was not found' ]]; then
+        dockutil --add "/Applications/$app.app" --position end --no-restart
+    fi
+done
+
+echo "Restarting Dock."
+killall Dock
 
 echo
 echo "Installing App Store Apps:"
