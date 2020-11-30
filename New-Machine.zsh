@@ -36,6 +36,8 @@ done
 
 
 echo
+echo "Tapping Cask "
+brew tap homebrew/cask
 echo "Installing casks:"
 
 casks=(
@@ -54,7 +56,6 @@ casks=(
     'istat-menus'
     'iterm2'
     'kodi'
-    'lastpass'
     'microsoft-azure-storage-explorer'
     'microsoft-office'
     'minecraft'
