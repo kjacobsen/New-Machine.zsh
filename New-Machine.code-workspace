@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {},
+	"extensions": {
+		"recommendations": [
+			"sharat.vscode-brewfile",
+			"bmalehorn.shell-syntax"
+		]
+	}
+}

@@ -15,67 +15,15 @@ else
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
+if [ -f ~/Brewfile ]; then
+    echo "Brewfile already exists. Renaming Brewfile.old. If you have been making changes to the Brewfile, please handle this yourself."
+    mv -f Brewfile Brewfile.old
+fi
 
-echo
-echo "Installing brews:"
+echo "Downloading Brewfile to home directory"
+curl https://raw.githubusercontent.com/robfaie/New-Machine.zsh/main/Brewfile -o ~/Brewfile
 
-brews=(
-    'azure-cli'
-    'dockutil'
-    'gitversion'
-    'hugo'
-    'mas'
-)
-
-for brew in $brews; do
-    brew install $brew
-done
-
-
-echo
-echo "Tapping Cask "
-brew tap homebrew/cask
-echo "Installing casks:"
-
-casks=(
-    'adobe-creative-cloud'
-    'azure-data-studio'
-    'backblaze'
-    'balenaetcher'
-    'bitwarden'
-    'brave-browser'
-    'cisco-proximity'
-    'discord'
-    'docker'
-    'elmedia-player'
-    'gitkraken'
-    'homebrew/cask-drivers/qmk-toolbox'
-    'istat-menus'
-    'iterm2'
-    'kodi'
-    'microsoft-azure-storage-explorer'
-    'microsoft-office'
-    'minecraft'
-    'parallels'
-    'postman'
-    'powershell'
-    'raspberry-pi-imager'
-    'sdformatter'
-    'steam'
-    'telegram'
-    'visual-studio-code'
-)
-
-for cask in $casks; do
-    brew install --cask $cask
-done
-
-
-echo
-echo "Tapping Cask Versions"
-brew tap homebrew/cask-versions
-echo "Installing Powershell Preview"
-brew cask install powershell-preview
+brew bundle --cleanup
 
 
 echo
@@ -97,6 +45,7 @@ echo " - Disable Photos auto open"
 defaults write com.apple.ImageCapture disableHotPlug -bool true
 echo " - Disable automatic Spaces arrangement"
 defaults write com.apple.dock mru-spaces -bool false
+
 
 echo
 echo "Setting up Dock:"
@@ -124,6 +73,7 @@ apps=(
 )
 
 for app in $apps; do
+    echo " - $app"
     exists=$(dockutil --find $app)
     if [[ $exists =~ 'was found' ]]; then
         dockutil --remove $app --no-restart
@@ -143,6 +93,7 @@ apps=(
 )
 
 for app in $apps; do
+    echo " - $app"
     exists=$(dockutil --find $app)
     if [[ $exists =~ 'was not found' ]]; then
         dockutil --add "/Applications/$app.app" --position end --no-restart
@@ -151,25 +102,3 @@ done
 
 echo "Restarting Dock."
 killall Dock
-
-echo
-echo "Installing App Store Apps:"
-
-declare -A apps
-apps=(
-    [Amphetamine]=937984704
-    [Commander-Pro]=1035237815
-    [Keynote]=409183694
-    [LastPass]=926036361
-    [Magnet]=441258766
-    [Microsoft-RDP]=1295203466
-    [Numbers]=409203825
-    [Pages]=409201541
-    [Stuffit-Expander]=919269455
-    [Xcode]=497799835
-)
-
-for name id in ${(kv)apps}; do
-    echo " - $name"
-    mas install $id
-done
