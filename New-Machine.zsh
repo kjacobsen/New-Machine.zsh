@@ -87,6 +87,7 @@ apps=(
     'Microsoft Outlook'
     'Microsoft Teams'
     'Telegram'
+    'Bitwarden'
     'Visual Studio Code'
     'GitKraken'
     'iTerm'
