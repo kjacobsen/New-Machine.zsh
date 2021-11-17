@@ -5,6 +5,9 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 brew "sqlite"
 brew "azure-cli"
+brew "bitwarden-cli"
+brew "certbot"
+brew "cmake"
 brew "dockutil"
 brew "gitversion"
 brew "gnupg"
@@ -20,6 +23,7 @@ cask "cisco-proximity"
 cask "discord"
 cask "docker"
 cask "elmedia-player"
+cask "firefox"
 cask "gitkraken"
 cask "istat-menus"
 cask "iterm2"
@@ -36,10 +40,13 @@ cask "powershell-preview"
 cask "qmk-toolbox"
 cask "raspberry-pi-imager"
 cask "sdformatter"
+cask "slack"
 cask "steam"
 cask "telegram"
 cask "visual-studio-code"
+cask "zoom"
 mas "Amphetamine", id: 937984704
+mas "Bitwarden", id: 1352778147
 mas "Commander One PRO", id: 1035237815
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
@@ -49,5 +56,6 @@ mas "Magnet", id: 441258766
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Spark", id: 1176895641
 mas "StuffIt Expander", id: 919269455
 mas "Xcode", id: 497799835
