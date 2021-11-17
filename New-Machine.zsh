@@ -61,7 +61,6 @@ apps=(
     'Calendar'
     'Reminders'
     'Notes'
-    'Music'
     'Podcasts'
     'TV'
     'News'
@@ -83,14 +82,16 @@ done
 
 echo "Adding apps:"
 apps=(
-    'Brave Browser'
+    'Firefox'
+    'Safari'
     'Microsoft Outlook'
-    'Microsoft Teams'
+    'Slack'
     'Telegram'
     'Bitwarden'
     'Visual Studio Code'
     'GitKraken'
     'iTerm'
+    'Microsoft OneNote'
 )
 
 for app in $apps; do
