@@ -13,6 +13,8 @@ if (( $+commands[brew] )); then
 else
     echo "Installing Homebrew."
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 if [ -f ~/Brewfile ]; then
