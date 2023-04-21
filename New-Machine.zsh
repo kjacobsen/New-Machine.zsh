@@ -23,7 +23,7 @@ if [ -f ~/Brewfile ]; then
 fi
 
 echo "Downloading Brewfile to home directory"
-curl https://raw.githubusercontent.com/robfaie/New-Machine.zsh/main/Brewfile -o ~/Brewfile
+curl https://raw.githubusercontent.com/kjacobsen/New-Machine.zsh/main/Brewfile -o ~/Brewfile
 
 brew bundle --cleanup
 
@@ -84,16 +84,15 @@ done
 
 echo "Adding apps:"
 apps=(
-    'Firefox'
-    'Safari'
+    'Edge'
     'Microsoft Outlook'
     'Slack'
     'Telegram'
+    'Zoom'
     'Bitwarden'
     'Visual Studio Code'
     'GitKraken'
     'iTerm'
-    'Microsoft OneNote'
 )
 
 for app in $apps; do
