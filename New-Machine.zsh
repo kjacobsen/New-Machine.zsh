@@ -23,7 +23,7 @@ if [ -f ~/Brewfile ]; then
 fi
 
 echo "Downloading Brewfile to home directory"
-curl https://raw.githubusercontent.com/robfaie/New-Machine.zsh/main/Brewfile -o ~/Brewfile
+curl https://raw.githubusercontent.com/kjacobsen/New-Machine.zsh/main/Brewfile -o ~/Brewfile
 
 brew bundle --cleanup
 
