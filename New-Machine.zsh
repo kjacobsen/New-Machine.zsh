@@ -23,7 +23,7 @@ if [ -f ~/Brewfile ]; then
 fi
 
 echo "Downloading Brewfile to home directory"
-curl https://raw.githubusercontent.com/kjacobsen/New-Machine.zsh/main/Brewfile -o ~/Brewfile
+curl https://raw.githubusercontent.com/robfaie/New-Machine.zsh/main/Brewfile -o ~/Brewfile
 
 brew bundle --cleanup
 
@@ -48,6 +48,11 @@ defaults write com.apple.ImageCapture disableHotPlug -bool true
 echo " - Disable automatic Spaces arrangement"
 defaults write com.apple.dock mru-spaces -bool false
 
+echo
+echo "Making Powershell the login shell."
+chsh -s /usr/local/bin/pwsh
+/usr/local/bin/pwsh -C "touch \$PROFILE.CurrentUserAllHosts; Add-Content -Path \$PROFILE.CurrentUserAllHosts -Value '$($HOMEBREW_PREFIX/bin/brew shellenv) | Invoke-Expression'"
+
 
 echo
 echo "Setting up Dock:"
@@ -56,7 +61,6 @@ echo "Removing apps:"
 apps=(
     'Mail'
     'FaceTime'
-    'Messages'
     'Maps'
     'Photos'
     'Contacts'
@@ -88,7 +92,6 @@ apps=(
     'Microsoft Outlook'
     'Slack'
     'Telegram'
-    'Zoom'
     'Bitwarden'
     'Visual Studio Code'
     'GitKraken'
