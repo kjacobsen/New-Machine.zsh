@@ -59,11 +59,7 @@ cask "visual-studio-code"
 cask "vlc"
 cask "wireshark"
 cask "zoom"
-mas "Amphetamine", id: 937984704
-mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Xcode", id: 497799835
 mas "Microsoft To Do", id: 1274495053
 vscode "bierner.markdown-mermaid"
