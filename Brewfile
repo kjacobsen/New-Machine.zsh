@@ -60,7 +60,6 @@ cask "vlc"
 cask "wireshark"
 cask "zoom"
 mas "Apple Configurator", id: 1037126344
-mas "Magnet", id: 441258766
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Xcode", id: 497799835
 mas "Microsoft To Do", id: 1274495053
