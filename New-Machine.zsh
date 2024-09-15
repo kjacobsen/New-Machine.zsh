@@ -7,6 +7,7 @@ else
     fdesetup enable
 fi
 
+sudo softwareupdate --install-rosetta
 
 if (( $+commands[brew] )); then
     echo "Homebrew already installed."
