@@ -91,7 +91,9 @@ echo "Adding apps:"
 apps=(
     'Edge'
     'Microsoft Outlook'
-    'Slack'
+    'Microsoft Teams'
+    'Microsoft Excel'
+    'Microsoft Word'
     'Telegram'
     'Bitwarden'
     'Visual Studio Code'
